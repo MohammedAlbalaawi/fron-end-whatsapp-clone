@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import styled from 'styled-components';
+import { ContactListComponent } from './components/ContactListComponent';
+import { ConversationComponent } from './components/ConversationComponent';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  background: #f8f9fb;
+`;
+
+const Placeholder = styled.div`
+display:flex;
+flex-direction:column;
+flex:3;
+justify-content:center;
+align-items:center;
+span{
+  font-size: 30px;
+  font-family: 'Segoe UI';
+}
+`
+const PlaceholderImg = styled.img`
+width:450px;
+height:450px;
+border-radius:50%;
+`
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [selectedChat, setselectedChat] = useState()
+
+  return <Container>
+    <ContactListComponent setselectedChat={setselectedChat}/>
+    {selectedChat ? (<ConversationComponent selectedChat={selectedChat}/>) : (
+    <Placeholder>
+      <PlaceholderImg src="profile/msg.svg" />
+    </Placeholder>
+      )}
+    </Container>;
 }
 
 export default App;
