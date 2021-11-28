@@ -75,7 +75,7 @@ export const ConversationComponent = (props) => {
       <ChatBox>
         <SearchContainer>
           <EmojiImage src="profile/emoji.png" />
-          <SearchInput placeholder="typa a msg" />
+          <SearchInput placeholder="type a message" />
         </SearchContainer>
       </ChatBox>
     </Container>
